@@ -11,15 +11,21 @@
                     </div>
                 </div>
                 <div class="guide-screen-slide__header__right" v-if="prevScreenKey || nextScreenKey">
-                    <button @click.prevent="prevSlide" :disabled="!prevScreenKey"
-                            :class="{ 'guide-screen-slide__header__right__arrow_disabled': !prevScreenKey}"
-                            class="guide-screen-slide__header__right__arrow">
-                        <font-awesome-icon :style="{ color: prevScreenKey ? 'white': '#b9b9b9' }" icon="arrow-left"></font-awesome-icon>
-                    </button>
-                    <button @click.prevent="nextSlide" :disabled="!nextScreenKey"
-                            :class="{ 'guide-screen-slide__header__right__arrow_disabled': !nextScreenKey}"
-                            class="guide-screen-slide__header__right__arrow">
-                        <font-awesome-icon :style="{ color: nextScreenKey ? 'white': '#b9b9b9' }" icon="arrow-right"></font-awesome-icon>
+                    <div>
+                        <button @click.prevent="prevSlide" :disabled="!prevScreenKey"
+                                :class="{ 'guide-screen-slide__header__right__arrow_disabled': !prevScreenKey}"
+                                class="guide-screen-slide__header__right__arrow">
+                            <font-awesome-icon :style="{ color: prevScreenKey ? 'white': '#b9b9b9' }" icon="arrow-left"></font-awesome-icon>
+                        </button>
+                        <button @click.prevent="nextSlide" :disabled="!nextScreenKey"
+                                :class="{ 'guide-screen-slide__header__right__arrow_disabled': !nextScreenKey}"
+                                class="guide-screen-slide__header__right__arrow">
+                            <font-awesome-icon :style="{ color: nextScreenKey ? 'white': '#b9b9b9' }" icon="arrow-right"></font-awesome-icon>
+                        </button>
+                    </div>
+
+                    <button @click.prevent="isShow = false" class="guide-screen-slide__header__right__close">
+                        <font-awesome-icon :style="{ color: 'white' }" icon="times"></font-awesome-icon>
                     </button>
                 </div>
             </div>
@@ -147,7 +153,7 @@
                     justify-content: space-between;
                     align-items: center;
                     padding: 20px;
-                    width: 70px;
+                    width: 100px;
 
                     &__arrow {
                         background: none;
@@ -158,6 +164,10 @@
                             color: #b9b9b9;
                             cursor: not-allowed;
                         }
+                    }
+
+                    &__close {
+                        @extend .guide-screen-slide__header__right__arrow;
                     }
 
                     &__arrow:focus {
