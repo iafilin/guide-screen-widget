@@ -78,7 +78,6 @@
                 return this.currentScreen.get('prev_key', false);
             },
             toggleButton(){
-                console.log(document.querySelector('[data-gsw-open]'))
                 return document.querySelector('[data-gsw-open]');
             }
         },
