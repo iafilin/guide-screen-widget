@@ -90,7 +90,7 @@
         },
         mounted() {
             this.$nextTick(() => {
-                const openEl = document.querySelector('[data-screen-widget-open]');
+                const openEl = document.querySelector('[data-gsw-open]');
                 if (openEl){
                     openEl.addEventListener('click',evt => {
                         evt.preventDefault();
