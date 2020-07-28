@@ -10,8 +10,8 @@
                         {{ currentScreen.get('desc') }}
                     </div>
                 </div>
-                <div class="guide-screen-slide__header__right" v-if="prevScreenKey || nextScreenKey">
-                    <div>
+                <div class="guide-screen-slide__header__right">
+                    <div v-if="prevScreenKey || nextScreenKey">
                         <button @click.prevent="prevSlide" :disabled="!prevScreenKey"
                                 :class="{ 'guide-screen-slide__header__right__arrow_disabled': !prevScreenKey}"
                                 class="guide-screen-slide__header__right__arrow">
@@ -31,9 +31,7 @@
             </div>
             <div class="guide-screen-slide__body">
                 <div style="position: relative">
-                    <a href="#"
-                       class="guide-screen-slide__body__btn"
-                       v-if="currentScreen.has('links')"
+                    <a href="#" class="guide-screen-slide__body__btn" v-if="currentScreen.has('links')"
                        v-for="link in currentScreen.get('links',[])"
                        :style="{ width: `${link.width}px`, height: `${link.height}px`, top: `${link.top}px`, left: `${link.left}px`, position: 'absolute' }"
                        @click.prevent="selectScreen(link.key)">
