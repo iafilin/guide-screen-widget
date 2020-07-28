@@ -9,5 +9,5 @@ document.body.append(wrapper);
 
 window.guide_screen_widget = new Vue({
   el: wrapper,
-  render: h => h(App),
+  ...App
 });
