@@ -46,7 +46,6 @@
 </template>
 
 <script>
-    import config from './assets/config'
     import _ from 'lodash'
     export default {
         name: 'App',
@@ -61,7 +60,7 @@
         },
         computed: {
             config() {
-                return _(config)
+                return _(window.guide_screen_config !== undefined ? window.guide_screen_config : {})
             },
             currentScreen() {
                 return _(this.config.get('screens').find(s => s.key === this.screenKey));
