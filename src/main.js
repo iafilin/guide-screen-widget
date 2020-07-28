@@ -7,7 +7,7 @@ Vue.config.productionTip = false
 const wrapper = document.createElement('div');
 document.body.append(wrapper);
 
-new Vue({
+window.guide_screen_widget = new Vue({
   el: wrapper,
   render: h => h(App),
 });

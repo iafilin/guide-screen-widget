@@ -90,6 +90,9 @@
             },
             nextSlide() {
                 this.selectScreen(this.nextScreenKey);
+            },
+            toggleShow(){
+                this.isShow = !this.isShow;
             }
         },
         mounted() {
@@ -97,7 +100,7 @@
                 if (this.toggleButton){
                     this.toggleButton.addEventListener('click',evt => {
                         evt.preventDefault();
-                        this.isShow = !this.isShow;
+                        this.toggleShow();
                     })
                 }
             })
