@@ -78,6 +78,7 @@
                 return this.currentScreen.get('prev_key', false);
             },
             toggleButton(){
+                console.log(document.querySelector('[data-gsw-open]'))
                 return document.querySelector('[data-gsw-open]');
             }
         },
@@ -93,12 +94,14 @@
             }
         },
         mounted() {
-            if (this.toggleButton){
-                this.toggleButton.addEventListener('click',evt => {
-                    evt.preventDefault();
-                    this.isShow = !this.isShow;
-                })
-            }
+            this.$nextTick(() => {
+                if (this.toggleButton){
+                    this.toggleButton.addEventListener('click',evt => {
+                        evt.preventDefault();
+                        this.isShow = !this.isShow;
+                    })
+                }
+            })
         },
         destroyed() {
             if (this.toggleButton){
