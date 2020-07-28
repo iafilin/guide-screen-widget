@@ -6,7 +6,7 @@
                     <div class="guide-screen-slide__header__left__title" v-if="currentScreen.has('title')">
                         {{ currentScreen.get('title') }}
                     </div>
-                    <div class="guide-screen-slide__header__left__desc" v-if="currentScreen.has('desc')">
+                    <div class="guide-screen-slide__header__left__desc">
                         {{ currentScreen.get('desc') }}
                     </div>
                 </div>
@@ -72,10 +72,13 @@
                 return _(this.config.get('screens').find(s => s.key === this.screenKey));
             },
             nextScreenKey() {
-                return _(this.config.get('screens').find(s => s.key === this.screenKey)).get('next_key', false);
+                return this.currentScreen.get('next_key', false);
             },
             prevScreenKey() {
-                return _(this.config.get('screens').find(s => s.key === this.screenKey)).get('prev_key', false);
+                return this.currentScreen.get('prev_key', false);
+            },
+            toggleButton(){
+                return document.querySelector('[data-gsw-open]');
             }
         },
         methods: {
@@ -89,21 +92,18 @@
                 this.selectScreen(this.nextScreenKey);
             }
         },
-        watch: {
-            screenKey(v) {
-                console.log(v)
+        mounted() {
+            if (this.toggleButton){
+                this.toggleButton.addEventListener('click',evt => {
+                    evt.preventDefault();
+                    this.isShow = !this.isShow;
+                })
             }
         },
-        mounted() {
-            this.$nextTick(() => {
-                const openEl = document.querySelector('[data-gsw-open]');
-                if (openEl){
-                    openEl.addEventListener('click',evt => {
-                        evt.preventDefault();
-                        this.isShow = !this.isShow;
-                    })
-                }
-            });
+        destroyed() {
+            if (this.toggleButton){
+                this.toggleButton.removeEventListener('click');
+            }
         }
     }
 </script>

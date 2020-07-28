@@ -3,5 +3,5 @@ module.exports = {
     chainWebpack: config => {
         config.optimization.delete('splitChunks')
     },
-    css: {extract: false}
+    css: { extract: false }
 };
