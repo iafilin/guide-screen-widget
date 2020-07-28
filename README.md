@@ -1,4 +1,4 @@
-# tour-widget
+# guide-screen-widget
 
 ## Project setup
 ```
