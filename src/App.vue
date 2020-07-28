@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="guide-screen-widget">
+    <div class="guide-screen-widget" v-if="isShow">
         <div class="guide-screen-slide">
             <div class="guide-screen-slide__header">
                 <div class="guide-screen-slide__header__left">
@@ -48,7 +48,6 @@
 <script>
     import config from './assets/config'
     import _ from 'lodash'
-
     export default {
         name: 'App',
         components: {
@@ -56,7 +55,8 @@
         },
         data() {
             return {
-                screenKey: 1
+                screenKey: 1,
+                isShow: false,
             }
         },
         computed: {
@@ -88,6 +88,17 @@
             screenKey(v) {
                 console.log(v)
             }
+        },
+        mounted() {
+            this.$nextTick(() => {
+                const openEl = document.querySelector('[data-screen-widget-open]');
+                if (openEl){
+                    openEl.addEventListener('click',evt => {
+                        evt.preventDefault();
+                        this.isShow = !this.isShow;
+                    })
+                }
+            });
         }
     }
 </script>
@@ -103,6 +114,7 @@
         bottom: 0;
         height: 100%;
         width: 100%;
+        background-color: white;
 
         .guide-screen-slide {
 
